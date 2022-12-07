@@ -1,3 +1,5 @@
+*This is the console output when I try to run using the "DataParallel" class in main.py*
+
 /home/ryanyohnk/.conda/envs/intel_data_parallel/bin/python /home/ryanyohnk/dev/intel-data-parallel/main.py
 Linear Layer dtype: torch.float32
 /home/ryanyohnk/.conda/envs/intel_data_parallel/lib/python3.9/site-packages/torch/nn/parallel/data_parallel.py:30: UserWarning:

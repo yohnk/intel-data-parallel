@@ -1,0 +1,24 @@
+*This is the console output when I try to run using the "data_parallel" method in main.py*
+
+/home/ryanyohnk/.conda/envs/intel_data_parallel/bin/python /home/ryanyohnk/dev/intel-data-parallel/main.py
+Linear Layer dtype: torch.float32
+X dtype: torch.float32
+Y dtype: torch.float32
+Traceback (most recent call last):
+  File "/home/ryanyohnk/dev/intel-data-parallel/main.py", line 49, in <module>
+    main()
+  File "/home/ryanyohnk/dev/intel-data-parallel/main.py", line 38, in main
+    output = data_parallel(model, x, ["xpu:0", "xpu:1"], "xpu:0")
+  File "/home/ryanyohnk/dev/intel-data-parallel/main.py", line 16, in data_parallel
+    replicas = nn.parallel.replicate(module, device_ids)
+  File "/home/ryanyohnk/.conda/envs/intel_data_parallel/lib/python3.9/site-packages/torch/nn/parallel/replicate.py", line 91, in replicate
+    param_copies = _broadcast_coalesced_reshape(params, devices, detach)
+  File "/home/ryanyohnk/.conda/envs/intel_data_parallel/lib/python3.9/site-packages/torch/nn/parallel/replicate.py", line 71, in _broadcast_coalesced_reshape
+    tensor_copies = Broadcast.apply(devices, *tensors)
+  File "/home/ryanyohnk/.conda/envs/intel_data_parallel/lib/python3.9/site-packages/torch/nn/parallel/_functions.py", line 23, in forward
+    outputs = comm.broadcast_coalesced(inputs, ctx.target_gpus)
+  File "/home/ryanyohnk/.conda/envs/intel_data_parallel/lib/python3.9/site-packages/torch/nn/parallel/comm.py", line 58, in broadcast_coalesced
+    return torch._C._broadcast_coalesced(tensors, devices, buffer_size)
+AttributeError: module 'torch._C' has no attribute '_broadcast_coalesced'
+
+Process finished with exit code 136 (interrupted by signal 8: SIGFPE)
