@@ -1,0 +1,36 @@
+/home/ryanyohnk/.conda/envs/intel_data_parallel/bin/python /home/ryanyohnk/dev/intel-data-parallel/main.py
+Linear Layer dtype: torch.float32
+/home/ryanyohnk/.conda/envs/intel_data_parallel/lib/python3.9/site-packages/torch/nn/parallel/data_parallel.py:30: UserWarning:
+    There is an imbalance between your GPUs. You may want to exclude GPU 0 which
+    has less than 75% of the memory or cores of GPU 2. You can do so by setting
+    the device_ids argument to DataParallel, or by setting the CUDA_VISIBLE_DEVICES
+    environment variable.
+  warnings.warn(imbalance_warn.format(device_ids[min_pos], device_ids[max_pos]))
+Traceback (most recent call last):
+  File "/home/ryanyohnk/dev/intel-data-parallel/main.py", line 34, in <module>
+    main()
+  File "/home/ryanyohnk/dev/intel-data-parallel/main.py", line 23, in main
+    output = model(x)
+  File "/home/ryanyohnk/.conda/envs/intel_data_parallel/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/ryanyohnk/.conda/envs/intel_data_parallel/lib/python3.9/site-packages/torch/nn/parallel/data_parallel.py", line 158, in forward
+    inputs, kwargs = self.scatter(inputs, kwargs, self.device_ids)
+  File "/home/ryanyohnk/.conda/envs/intel_data_parallel/lib/python3.9/site-packages/torch/nn/parallel/data_parallel.py", line 175, in scatter
+    return scatter_kwargs(inputs, kwargs, device_ids, dim=self.dim)
+  File "/home/ryanyohnk/.conda/envs/intel_data_parallel/lib/python3.9/site-packages/torch/nn/parallel/scatter_gather.py", line 44, in scatter_kwargs
+    inputs = scatter(inputs, target_gpus, dim) if inputs else []
+  File "/home/ryanyohnk/.conda/envs/intel_data_parallel/lib/python3.9/site-packages/torch/nn/parallel/scatter_gather.py", line 36, in scatter
+    res = scatter_map(inputs)
+  File "/home/ryanyohnk/.conda/envs/intel_data_parallel/lib/python3.9/site-packages/torch/nn/parallel/scatter_gather.py", line 23, in scatter_map
+    return list(zip(*map(scatter_map, obj)))
+  File "/home/ryanyohnk/.conda/envs/intel_data_parallel/lib/python3.9/site-packages/torch/nn/parallel/scatter_gather.py", line 19, in scatter_map
+    return Scatter.apply(target_gpus, None, dim, obj)
+  File "/home/ryanyohnk/.conda/envs/intel_data_parallel/lib/python3.9/site-packages/torch/nn/parallel/_functions.py", line 99, in forward
+    outputs = comm.scatter(input, target_gpus, chunk_sizes, ctx.dim, streams)
+  File "/home/ryanyohnk/.conda/envs/intel_data_parallel/lib/python3.9/site-packages/torch/nn/parallel/comm.py", line 189, in scatter
+    return tuple(torch._C._scatter(tensor, devices, chunk_sizes, dim, streams))
+AttributeError: module 'torch._C' has no attribute '_scatter'
+X dtype: torch.float32
+Y dtype: torch.float32
+
+Process finished with exit code 136 (interrupted by signal 8: SIGFPE)
